@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment.prod';
 import { Base64 } from 'js-base64';
 import { auth } from 'firebase/app';
 import { StorageKeys } from './../../storage-keys';
@@ -87,7 +88,7 @@ export class AuthService {
   MicrosoftAuth(): Observable<any> {
     const provider = new auth.OAuthProvider('microsoft.com');
     provider.addScope('user.read');
-    provider.setCustomParameters({ tenant: '43b6efd3-133a-4e68-b1e8-84c18550db5d', prompt: 'consent'});
+    provider.setCustomParameters({ tenant: environment.tenant, prompt: 'consent'});
     return this.AuthLogin(provider);
   }
 
