@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import "~@fortawesome/fontawesome-svg-core/styles.css";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+app-login .mat-spinner circle {
+  stroke: ghostwhite
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.spinner {
+  margin: 30px auto 0 auto;
+}
+
+.fixed-bottom {
+  position: fixed;
+  bottom: 0;
+}
+
+.app-user-profile .mat-spinner circle {
+  stroke: #fff;
+}
+
+.mat-dialog-no-padding .mat-dialog-container {
+ padding: 0;
+}

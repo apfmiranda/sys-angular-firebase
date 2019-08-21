@@ -1,0 +1,79 @@
+<span class="login-container">
+    <mat-card>
+
+      <mat-card-title>
+        <mat-toolbar color=primary>
+          <span>{{ configs.actionText }}</span>
+          <span class="spacer"></span>
+          <mat-spinner *ngIf="configs.isLoading" diameter="25" strokewidth="2" ></mat-spinner>
+        </mat-toolbar>
+      </mat-card-title>
+
+      <mat-card-content>
+
+        <form (submit)="onSubmit()" [formGroup]="loginForm">
+
+          <mat-form-field>
+            <input matInput type="email" placeholder="Email" formControlName="email">
+            <mat-error *ngIf="(email.hasError('required') && email.touched || email.dirty)" >
+              Campo obrigatório
+            </mat-error>
+            <mat-error *ngIf="(email.hasError('email') && email.touched || email.dirty)" >
+              Email inválido
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput type="password" placeholder="Senha" formControlName="password">
+            <mat-error *ngIf="(password.hasError('required') && password.touched || password.dirty)" >
+              Campo obrigatório
+            </mat-error>
+          </mat-form-field>
+
+          <mat-slide-toggle
+            color="primary"
+            [checked]="authService.keepSigned"
+            (change)="onKeepSigned()"
+            >Continuar logado</mat-slide-toggle>
+
+          <mat-slide-toggle
+            color="primary"
+            [checked]="authService.rememberMe"
+            (change)="onRememberMe()"
+            >Lembre de mim</mat-slide-toggle>
+
+          <button
+            type="submit"
+            mat-stroked-button color="primary"
+            [disabled]="loginForm.invalid"
+            >{{ configs.actionText }}
+          </button>
+          <button
+            type="button"
+            mat-stroked-button color="primary"
+            (click)="changeAction()"
+            >{{ configs.buttonActionText }}
+          </button>
+
+          <button *ngIf="configs.isLogin"
+            type="button"
+            mat-raised-button color="warn"
+            (click)="loginWithGoogle()">
+            <i class="fa fa-google"></i>
+            Registre-se usando o Google
+          </button>
+
+          <button *ngIf="configs.isLogin"
+            type="button"
+            mat-raised-button color="primary"
+            (click)="loginWithMicrosoft()">
+            <i class="fa fa-windows"></i>
+            Registre-se usando a Microsoft
+          </button>
+
+        </form>
+
+      </mat-card-content>
+
+    </mat-card>
+  </span>
